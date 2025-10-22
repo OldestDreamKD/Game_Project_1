@@ -234,3 +234,332 @@ a.text-decoration-none:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
+
+/* Text Card Styling */
+.text-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.text-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Concept Box New Styling */
+.concept-box-new {
+    background: white;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.concept-box-new:hover {
+    border-color: #0d6efd;
+    box-shadow: 0 8px 20px rgba(13, 110, 253, 0.25);
+    transform: translateY(-5px);
+}
+
+/* Flip Card Styling */
+.flip-card-container {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.flip-card-front {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.flip-card-back {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.flip-card-front h2,
+.flip-card-back h2 {
+    color: white;
+}
+
+
+/* Concept Box New Styling with Direct Gradients */
+.concept-box-new {
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.concept-box-new:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.concept-box-new h4 {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Individual gradient backgrounds for each concept */
+.concept-box-new[data-concept-id="1"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.concept-box-new[data-concept-id="2"] {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.concept-box-new[data-concept-id="3"] {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.concept-box-new[data-concept-id="4"] {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.concept-box-new[data-concept-id="5"] {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.concept-box-new[data-concept-id="6"] {
+    background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+}
+
+.concept-box-new[data-concept-id="7"] {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+}
+
+.concept-box-new[data-concept-id="8"] {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+}
+
+.concept-box-new[data-concept-id="9"] {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+}
+
+.concept-box-new[data-concept-id="10"] {
+    background: linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%);
+}
+
+.concept-box-new[data-concept-id="11"] {
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+}
+
+.concept-box-new[data-concept-id="12"] {
+    background: linear-gradient(135deg, #f77062 0%, #fe5196 100%);
+}
+
+.concept-box-new[data-concept-id="13"] {
+    background: linear-gradient(135deg, #c471f5 0%, #fa71cd 100%);
+}
+
+.concept-box-new[data-concept-id="14"] {
+    background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%);
+}
+
+.concept-box-new[data-concept-id="15"] {
+    background: linear-gradient(135deg, #f83600 0%, #f9d423 100%);
+}
+
+.concept-box-new[data-concept-id="16"] {
+    background: linear-gradient(135deg, #0ba360 0%, #3cba92 100%);
+}
+
+.concept-box-new[data-concept-id="17"] {
+    background: linear-gradient(135deg, #209cff 0%, #68e0cf 100%);
+}
+
+.concept-box-new[data-concept-id="18"] {
+    background: linear-gradient(135deg, #b224ef 0%, #7579ff 100%);
+}
+
+.concept-box-new[data-concept-id="19"] {
+    background: linear-gradient(135deg, #b92b27 0%, #1565c0 100%);
+}
+
+.concept-box-new[data-concept-id="20"] {
+    background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);
+}
+
+.concept-box-new[data-concept-id="21"] {
+    background: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%);
+}
+
+.concept-box-new[data-concept-id="22"] {
+    background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+}
+
+.concept-box-new[data-concept-id="23"] {
+    background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+}
+
+.concept-box-new[data-concept-id="24"] {
+    background: linear-gradient(135deg, #eacda3 0%, #d6ae7b 100%);
+}
+
+.concept-box-new[data-concept-id="25"] {
+    background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+}
+
+/* Concept number badge styling */
+.concept-number {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-weight: bold;
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Corner number badge - cleaner look */
+.concept-number {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Dashboard container - more space on desktop */
+.container-dashboard {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Mobile: full width with standard padding */
+@media (max-width: 767px) {
+    .container-dashboard {
+        max-width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* Keep 1 card per row on mobile */
+    .container-dashboard .col-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Tablet: 2 cards per row */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .container-dashboard {
+        max-width: 90%;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .container-dashboard .col-sm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+/* Desktop: 2 cards per row with more side spacing */
+@media (min-width: 1200px) {
+    .container-dashboard {
+        max-width: 1000px;
+        /* Limit width for better layout */
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+    .container-dashboard .col-md-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+/* Large Desktop: even more spacing */
+@media (min-width: 1400px) {
+    .container-dashboard {
+        max-width: 1100px;
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+}
+
+/* Apply modal background only on the card-selection page */
+.card-selection-page .modal-backdrop.show {
+    background-image: url('./assets/3.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1 !important;
+    /* Make sure image shows */
+    filter: brightness(0.4);
+    /* Slightly darken */
+}
+
+/* Only applies on cardselection.html
+ .modal-content {
+    background: url('./assets/Background2.jpg') center/cover no-repeat;
+    border: none;
+    color: white;
+}
+
+.cardselection-page #cardModal .modal-header,
+.cardselection-page #cardModal .modal-footer {
+    background: transparent;
+    border: none;
+}
+
+.cardselection-page #cardModal .modal-body {
+    background: rgba(0, 0, 0, 0.3);
+} */

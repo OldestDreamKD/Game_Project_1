@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" class="container-fluid">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" …>
+    <link rel="stylesheet" href="./style.css">
+    <title>Card Selection</title>
+</head>
+
+<body class="text-center h-100 row align-items-center card-selection-page" id="box">
+    <div class="align-items-center my-3">
+        <a href="./dashboard.html" class="btn btn-danger my-2 mb-sm-0">Go Back</a>
+        <h1 class="fw-light mt-1 flex-sm-grow-1 text-center" id="conceptTitle">Choose a card</h1>
+
+        <div class="container my-5">
+            <div class="row g-5 justify-content-center  mx-sm-3" id="cardContainer">
+                <!-- Cards will be dynamically generated here -->
+            </div>
+        </div>
+
+        <!-- Modal Structure -->
+        <div class="modal fade" id="cardModal" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content text-bg-dark">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title" id="cardModalLabel"></h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <!-- Card flip container -->
+                        <div class="flip-card-container" id="flipCardContainer">
+                            <div class="flip-card-inner" id="flipCardInner">
+                                <div class="flip-card-front">
+                                    <h2 class="display-1">?</h2>
+                                    <p class="lead mt-3">Click Reveal to see the card</p>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h2 class="display-4" id="revealedCard"></h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-primary btn-lg mt-4" id="revealBtn">Reveal Card</button>
+                    </div>
+                    <div class="modal-footer border-0 justify-content-center">
+                        <button type="button" class="btn btn-secondary"
+                            onclick="window.location.href='./dashboard.html'">Back to Dashboard</button>
+                        <button type="button" class="btn btn-danger" onclick="window.location.href='./index.html'">Back
+                            to Home</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bubbles">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
+
+        <script>
+            // Get data from sessionStorage
+            const conceptName = sessionStorage.getItem('selectedConcept');
+            const items = JSON.parse(sessionStorage.getItem('selectedItems'));
+
+            // Update page title
+            document.getElementById('conceptTitle').textContent = `Choose a card from: ${conceptName}`;
+
+            // Random background colors for cards
+            const colors = [
+                '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A',
+                '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2',
+                '#F8B739', '#52B788', '#E76F51', '#2A9D8F'
+            ];
+
+            // Generate cards dynamically
+            const cardContainer = document.getElementById('cardContainer');
+            items.forEach((item, index) => {
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+                const cardDiv = document.createElement('div');
+                cardDiv.className = 'col-12 col-sm-6';
+                cardDiv.innerHTML = `
+                    <div class="text-card modal-card d-flex align-items-center justify-content-center p-4 rounded-4 shadow-lg"
+                         style="background: ${randomColor}; min-height: 200px; cursor: pointer;"
+                         data-card-text="${item}">
+                        <h3 class="fw-bold text-white">${item}</h3>
+                    </div>
+                `;
+                cardContainer.appendChild(cardDiv);
+            });
+
+            // Add click event to all cards
+            document.querySelectorAll('.text-card').forEach(card => {
+                card.addEventListener('click', function () {
+                    const cardText = this.getAttribute('data-card-text');
+                    const modal = new bootstrap.Modal(document.getElementById('cardModal'));
+
+                    // Set modal title
+                    document.getElementById('cardModalLabel').textContent = `Guess the card of ${conceptName} Concept`;
+
+                    // Set revealed card text (hidden initially)
+                    document.getElementById('revealedCard').textContent = cardText;
+
+                    // Reset flip state
+                    document.getElementById('flipCardInner').classList.remove('flipped');
+
+                    // Show modal
+                    modal.show();
+                });
+            });
+
+            // Reveal button functionality
+            document.getElementById('revealBtn').addEventListener('click', function () {
+                document.getElementById('flipCardInner').classList.add('flipped');
+                this.disabled = true;
+                this.textContent = 'Revealed!';
+            });
+
+            // Reset reveal button when modal is closed
+            document.getElementById('cardModal').addEventListener('hidden.bs.modal', function () {
+                const revealBtn = document.getElementById('revealBtn');
+                revealBtn.disabled = false;
+                revealBtn.textContent = 'Reveal Card';
+            });
+        </script>
+    </div>
+</body>
+
+</html>
