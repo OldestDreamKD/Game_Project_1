@@ -1,3 +1,6 @@
+/* ========================= */
+/* GLOBAL RESET & DEFAULTS */
+/* ========================= */
 * {
     padding: 0;
     margin: 0;
@@ -9,7 +12,7 @@
     color: white;
 }
 
-html{
+html {
     height: 100%;
 }
 
@@ -18,25 +21,168 @@ body {
     overscroll-behavior-x: none;
     overscroll-behavior-y: none;
 }
-.card-cover {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* default for desktop */
-    aspect-ratio: 4 / 3;
-    /* controls card height consistently */
+
+#box {
+    background: #1a1e23;
+    margin: 0;
 }
 
-#title_Name{
-    font-size: 6rem;
+/* ========================= */
+/* TYPOGRAPHY - BASE (MOBILE) */
+/* ========================= */
+body,
+#box,
+.container-fluid {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+#title_Name {
+    font-size: 3rem;
     font-weight: bolder;
 }
 
-#box{
-    background: #1a1e23;
-        margin: 0;
+#title_Name_Rules {
+    font-size: 2rem;
+    font-weight: bolder;
 }
 
+h1 {
+    font-size: 1.8rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+#startBtn,
+.btn {
+    font-size: 1rem;
+    padding: 0.5em 1.2em;
+}
+
+/* List styling */
+ul,
+ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+    margin-left: 1.3rem;
+    list-style-type: circle;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* ========================= */
+/* LAPTOP / DESKTOP (768px+) */
+/* ========================= */
+@media (min-width: 768px) {
+
+    body,
+    #box,
+    .container-fluid {
+        font-size: 1.25rem;
+    }
+
+    #title_Name {
+        font-size: 4.5rem;
+    }
+
+    #title_Name_Rules {
+        font-size: 3rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+    }
+
+    #startBtn,
+    .btn {
+        font-size: 1.1rem;
+        padding: 0.6em 1.5em;
+    }
+
+    ul,
+    ol {
+        padding-left: 2.5rem;
+    }
+
+    ul ul,
+    ol ul,
+    ul ol,
+    ol ol {
+        margin-left: 1.5rem;
+    }
+
+    li {
+        margin-bottom: 0.6rem;
+    }
+}
+
+/* ========================= */
+/* LARGE DISPLAYS / TVs (1400px+) */
+/* ========================= */
+@media (min-width: 1400px) {
+
+    body,
+    #box,
+    .container-fluid {
+        font-size: 2rem;
+    }
+
+    #title_Name {
+        font-size: 6.5rem;
+    }
+
+    #title_Name_Rules {
+        font-size: 4.5rem;
+    }
+
+    h1 {
+        font-size: 3.8rem;
+    }
+
+    h4 {
+        font-size: 2.5rem;
+    }
+
+    #startBtn,
+    .btn {
+        font-size: 1.8rem;
+        padding: 0.8em 2em;
+    }
+
+    ul,
+    ol {
+        padding-left: 3.5rem;
+    }
+
+    ul ul,
+    ol ul,
+    ul ol,
+    ol ol {
+        margin-left: 2rem;
+    }
+
+    li {
+        margin-bottom: 0.8rem;
+    }
+}
+
+/* ========================= */
+/* BUBBLES ANIMATION */
+/* ========================= */
 .bubbles {
     position: fixed;
     top: 0;
@@ -179,6 +325,16 @@ body {
     }
 }
 
+/* ========================= */
+/* CARD & INTERACTION STYLES */
+/* ========================= */
+.card-cover {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    aspect-ratio: 4 / 3;
+}
+
 .hover-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -196,13 +352,11 @@ a.text-decoration-none:hover {
     color: inherit;
 }
 
-/* Concept Box Styling */
 .concept-box {
     background: white;
     border: 2px solid transparent;
     transition: all 0.3s ease;
     height: 180px;
-    /* fixed height for uniformity */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -210,19 +364,12 @@ a.text-decoration-none:hover {
 
 .concept-box:hover {
     border-color: #0d6efd;
-    /* Bootstrap blue border on hover */
     box-shadow: 0 8px 20px rgba(13, 110, 253, 0.25);
     transform: translateY(-5px);
 }
 
-.concept-box h4 {
-    font-family: "Playwrite US Modern", sans-serif;
-}
-
-/* Button Styling Enhancement */
 .concept-box .btn {
     pointer-events: none;
-    /* makes the entire box clickable instead of just the button */
 }
 
 .modal-card {
@@ -235,7 +382,6 @@ a.text-decoration-none:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* Text Card Styling */
 .text-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -245,86 +391,35 @@ a.text-decoration-none:hover {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Concept Box New Styling */
+/* ========================= */
+/* CONCEPT BOX WITH GRADIENTS */
+/* ========================= */
 .concept-box-new {
-    background: white;
     border: 2px solid transparent;
     transition: all 0.3s ease;
-    min-height: 150px;
+    min-height: 180px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    cursor: pointer;
-}
-
-.concept-box-new:hover {
-    border-color: #0d6efd;
-    box-shadow: 0 8px 20px rgba(13, 110, 253, 0.25);
-    transform: translateY(-5px);
-}
-
-/* Flip Card Styling */
-.flip-card-container {
-    perspective: 1000px;
-    width: 100%;
-    max-width: 400px;
-    height: 300px;
-    margin: 0 auto;
-}
-
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-}
-
-.flip-card-inner.flipped {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    padding: 20px;
-}
-
-.flip-card-front {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-
-.flip-card-back {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    color: white;
-    transform: rotateY(180deg);
-}
-
-.flip-card-front h2,
-.flip-card-back h2 {
-    color: white;
-}
-
-
-/* Concept Box New Styling with Direct Gradients */
-.concept-box-new {
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
-    min-height: 150px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     cursor: pointer;
     position: relative;
+    padding: 1.5rem 3.5rem 1.5rem 1.5rem;
+    /* Extra padding on right for number badge */
+}
+
+/* Ensure parent columns have equal heights */
+.container-dashboard .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-dashboard .col-12,
+.container-dashboard .col-sm-6,
+.container-dashboard .col-md-4 {
+    display: flex;
+    margin-bottom: 1.5rem;
 }
 
 .concept-box-new:hover {
@@ -336,9 +431,32 @@ a.text-decoration-none:hover {
 .concept-box-new h4 {
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    word-wrap: break-word;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Individual gradient backgrounds for each concept */
+@media (min-width: 768px) {
+    .concept-box-new {
+        min-height: 200px;
+        padding: 1.8rem 4rem 1.8rem 1.8rem;
+        /* More right padding on larger screens */
+    }
+}
+
+@media (min-width: 1400px) {
+    .concept-box-new {
+        min-height: 250px;
+        padding: 2rem 4.5rem 2rem 2rem;
+        /* Even more space for TV screens */
+    }
+}
 .concept-box-new[data-concept-id="1"] {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
@@ -439,22 +557,6 @@ a.text-decoration-none:hover {
     background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
 }
 
-/* Concept number badge styling */
-.concept-number {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    color: white;
-    font-weight: bold;
-    font-size: 0.85rem;
-    padding: 4px 12px;
-    border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Corner number badge - cleaner look */
 .concept-number {
     position: absolute;
     top: 15px;
@@ -473,7 +575,62 @@ a.text-decoration-none:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Dashboard container - more space on desktop */
+/* ========================= */
+/* FLIP CARD MODAL */
+/* ========================= */
+.flip-card-container {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.flip-card-front {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.flip-card-back {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.flip-card-front h2,
+.flip-card-back h2 {
+    color: white;
+}
+
+/* ========================= */
+/* DASHBOARD CONTAINER */
+/* ========================= */
 .container-dashboard {
     width: 100%;
     padding-left: 15px;
@@ -482,7 +639,6 @@ a.text-decoration-none:hover {
     margin-right: auto;
 }
 
-/* Mobile: full width with standard padding */
 @media (max-width: 767px) {
     .container-dashboard {
         max-width: 100%;
@@ -490,14 +646,16 @@ a.text-decoration-none:hover {
         padding-right: 20px;
     }
 
-    /* Keep 1 card per row on mobile */
     .container-dashboard .col-12 {
         flex: 0 0 100%;
         max-width: 100%;
     }
+
+    #concept_title{
+        margin-right: 0;
+    }
 }
 
-/* Tablet: 2 cards per row */
 @media (min-width: 768px) and (max-width: 1199px) {
     .container-dashboard {
         max-width: 90%;
@@ -509,13 +667,15 @@ a.text-decoration-none:hover {
         flex: 0 0 50%;
         max-width: 50%;
     }
+
+    #concept_title{
+        margin-right: 4;
+    }
 }
 
-/* Desktop: 2 cards per row with more side spacing */
 @media (min-width: 1200px) {
     .container-dashboard {
         max-width: 1000px;
-        /* Limit width for better layout */
         padding-left: 60px;
         padding-right: 60px;
     }
@@ -524,42 +684,38 @@ a.text-decoration-none:hover {
         flex: 0 0 50%;
         max-width: 50%;
     }
+    
+    #concept_title{
+        margin-right: 4;
+    }
 }
 
-/* Large Desktop: even more spacing */
 @media (min-width: 1400px) {
     .container-dashboard {
         max-width: 1100px;
         padding-left: 80px;
         padding-right: 80px;
     }
+
+    
+    #concept_title{
+        margin-right: 4;
+    }
 }
 
-/* Apply modal background only on the card-selection page */
+/* ========================= */
+/* MODAL BACKGROUND CUSTOMIZATION */
+/* ========================= */
 .card-selection-page .modal-backdrop.show {
     background-image: url('./assets/3.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     opacity: 1 !important;
-    /* Make sure image shows */
     filter: brightness(0.4);
-    /* Slightly darken */
 }
 
-/* Only applies on cardselection.html
- .modal-content {
-    background: url('./assets/Background2.jpg') center/cover no-repeat;
-    border: none;
-    color: white;
+.lead{
+        font-size: 1.7rem;
+        margin-bottom: 2rem;
 }
-
-.cardselection-page #cardModal .modal-header,
-.cardselection-page #cardModal .modal-footer {
-    background: transparent;
-    border: none;
-}
-
-.cardselection-page #cardModal .modal-body {
-    background: rgba(0, 0, 0, 0.3);
-} */
