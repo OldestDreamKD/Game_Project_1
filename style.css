@@ -578,11 +578,16 @@ a.text-decoration-none:hover {
 /* ========================= */
 /* FLIP CARD MODAL */
 /* ========================= */
+/* ========================= */
+/* FLIP CARD MODAL */
+/* ========================= */
 .flip-card-container {
     perspective: 1000px;
     width: 100%;
-    max-width: 400px;
-    height: 300px;
+    max-width: 280px;
+    /* Match the card selection size */
+    aspect-ratio: 2.5 / 3.5;
+    /* Same ratio as playing cards */
     margin: 0 auto;
 }
 
@@ -610,23 +615,74 @@ a.text-decoration-none:hover {
     justify-content: center;
     border-radius: 15px;
     padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 3px solid rgba(255, 255, 255, 0.3);
 }
 
 .flip-card-front {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    overflow: hidden;
+    padding: 0;
+    /* Remove padding to show full image */
+}
+
+/* Ensure images in modal match the card display */
+.flip-card-front>div {
+    width: 100%;
+    height: 100%;
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;
+    /* Force proper aspect ratio */
 }
 
 .flip-card-back {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     color: white;
     transform: rotateY(180deg);
 }
 
-.flip-card-front h2,
 .flip-card-back h2 {
     color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
+
+/* Responsive sizing for larger screens */
+@media (min-width: 768px) {
+    .flip-card-container {
+        max-width: 350px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .flip-card-container {
+        max-width: 420px;
+    }
+}
+
+/* Fix revealed card text overflow */
+.flip-card-back h2#revealedCard {
+    color: white;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    max-width: 90%;
+    font-size: clamp(1rem, 2.5vw, 2rem);
+    /* scales nicely across devices */
+    line-height: 1.3;
+    margin: 0 auto;
+}
+
+.flip-card-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 
 /* ========================= */
 /* DASHBOARD CONTAINER */
@@ -718,4 +774,228 @@ a.text-decoration-none:hover {
 .lead{
         font-size: 1.7rem;
         margin-bottom: 2rem;
+}
+
+
+/* ========================= */
+/* PLAYING CARD DESIGN (Tarot/Trading Card Style) */
+/* ========================= */
+/* Mobile Cards (default) */
+.playing-card {
+    perspective: 1000px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 180px;
+    /* ← CHANGE THIS for mobile card size (default: 180px) */
+    aspect-ratio: 2.5 / 3.5;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.playing-card:hover {
+    transform: translateY(-10px);
+}
+
+.playing-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.playing-card-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.playing-card-front svg,
+.playing-card-front img,
+.playing-card-front>div {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Tablet/Laptop Cards (768px and up) */
+@media (min-width: 768px) {
+    .playing-card {
+        max-width: 220px;
+        /* ← CHANGE THIS for tablet/laptop card size (default: 220px) */
+    }
+}
+
+/* Large Desktop/TV Cards (1400px and up) */
+@media (min-width: 1400px) {
+    .playing-card {
+        max-width: 280px;
+        /* ← CHANGE THIS for 4K/TV card size (default: 280px) */
+    }
+}
+
+/* Extra Large Screens (1920px and up) */
+@media (min-width: 1920px) {
+    .playing-card {
+        max-width: 350px;
+        /* ← CHANGE THIS for extra large TV card size (default: 350px) */
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.playing-card:hover {
+    transform: translateY(-10px);
+}
+
+.playing-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.playing-card-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.playing-card-front svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Mobile Modal Card */
+.flip-card-container {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 280px;
+    /* ← CHANGE THIS for mobile modal card size (default: 280px) */
+    aspect-ratio: 2.5 / 3.5;
+    margin: 0 auto;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.flip-card-front {
+    overflow: hidden;
+    padding: 0;
+}
+
+.flip-card-front>div {
+    width: 100%;
+    height: 100%;
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;
+}
+
+.flip-card-back {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    transform: rotateY(180deg);
+    padding: 1.5rem;
+    overflow: hidden;
+}
+
+.flip-card-back h2 {
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
+    text-align: center;
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
+    line-height: 1.3;
+    margin: 0;
+    padding: 0 1rem;
+}
+
+/* Tablet/Laptop Modal Card */
+@media (min-width: 768px) {
+    .flip-card-container {
+        max-width: 380px;
+        /* ← CHANGE THIS for tablet/laptop modal size (default: 380px) */
+    }
+
+    .flip-card-back h2 {
+        font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+    }
+}
+
+/* Large Desktop/TV Modal Card */
+@media (min-width: 1400px) {
+    .flip-card-container {
+        max-width: 500px;
+        /* ← CHANGE THIS for 4K/TV modal size (default: 500px) */
+    }
+
+    .flip-card-back h2 {
+        font-size: clamp(1.8rem, 3vw, 3.5rem);
+    }
+}
+
+/* Extra Large Screens Modal */
+@media (min-width: 1920px) {
+    .flip-card-container {
+        max-width: 600px;
+        /* ← CHANGE THIS for extra large TV modal size (default: 600px) */
+    }
+
+    .flip-card-back h2 {
+        font-size: clamp(2rem, 2.5vw, 4rem);
+    }
 }

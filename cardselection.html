@@ -13,7 +13,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap"
         rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" …>
     <link rel="stylesheet" href="./style.css">
     <title>Card Selection</title>
 </head>
@@ -24,7 +23,7 @@
         <h1 class="fw-light mt-1 flex-sm-grow-1 text-center" id="conceptTitle">Choose a card</h1>
 
         <div class="container my-5">
-            <div class="row g-5 justify-content-center  mx-sm-3" id="cardContainer">
+            <div class="row g-4 justify-content-center mx-sm-3" id="cardContainer">
                 <!-- Cards will be dynamically generated here -->
             </div>
         </div>
@@ -42,9 +41,8 @@
                         <!-- Card flip container -->
                         <div class="flip-card-container" id="flipCardContainer">
                             <div class="flip-card-inner" id="flipCardInner">
-                                <div class="flip-card-front">
-                                    <h2 class="display-1">?</h2>
-                                    <p class="lead mt-3">Click Reveal to see the card</p>
+                                <div class="flip-card-front" id="modalCardFront">
+                                    <!-- Dynamic pattern will be inserted here -->
                                 </div>
                                 <div class="flip-card-back">
                                     <h2 class="display-4" id="revealedCard"></h2>
@@ -116,6 +114,10 @@
         </div>
 
         <script>
+            document.getElementById('cardModal').addEventListener('hidden.bs.modal', () => {
+                    window.location.href = './cardselection.html';
+                });
+
             // Get data from sessionStorage
             const conceptName = sessionStorage.getItem('selectedConcept');
             const items = JSON.parse(sessionStorage.getItem('selectedItems'));
@@ -123,41 +125,154 @@
             // Update page title
             document.getElementById('conceptTitle').textContent = `Choose a card from: ${conceptName}`;
 
-            // Random background colors for cards
-            const colors = [
-                '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A',
-                '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2',
-                '#F8B739', '#52B788', '#E76F51', '#2A9D8F'
+            // Card gradient patterns (tarot/trading card style)
+            const cardPatterns = [
+                'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+                'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+                'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
+                'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+                'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
+                'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
+                'linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%)',
+                'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
+                'linear-gradient(135deg, #f77062 0%, #fe5196 100%)'
             ];
 
-            // Generate cards dynamically
-            const cardContainer = document.getElementById('cardContainer');
-            items.forEach((item, index) => {
-                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    // Update page title
+                    document.getElementById('conceptTitle').textContent = `Choose a card from: ${conceptName}`;
 
-                const cardDiv = document.createElement('div');
-                cardDiv.className = 'col-12 col-sm-6';
-                cardDiv.innerHTML = `
-                    <div class="text-card modal-card d-flex align-items-center justify-content-center p-4 rounded-4 shadow-lg"
-                         style="background: ${randomColor}; min-height: 200px; cursor: pointer;"
-                         data-card-text="${item}">
-                        <h3 class="fw-bold text-white">${item}</h3>
+                    // 30 diverse card back image URLs (mix of tarot, playing cards, and decorative designs)
+                    const cardBackImages = [
+                        './assets/C1.jpg',
+                        './assets/C2.png',
+                        './assets/C3.png',
+                        './assets/C4.png',
+                        './assets/C5.png',
+                        './assets/C6.png',
+                        './assets/C7.png',
+                        './assets/C8.png',
+                        './assets/C9.png',
+                        './assets/C10.png',
+                        './assets/C11.png',
+                        './assets/C12.png',
+                        './assets/C13.png',
+                        './assets/C14.png',
+                        './assets/C15.png',
+                        './assets/C16.png',
+                        './assets/C17.png',
+                        './assets/C18.png',
+                        './assets/C19.png',
+                        './assets/C20.png',
+                        './assets/C21.png',
+                    ];
+
+                    // Generate card back design with real images
+                    // ✅ Generates unique random images per page load
+                        let usedImages = [];
+
+                        function generateCardPattern() {
+                            if (usedImages.length === cardBackImages.length) usedImages = []; // reset when all used
+
+                            let randomIndex;
+                            do {
+                                randomIndex = Math.floor(Math.random() * cardBackImages.length);
+                            } while (usedImages.includes(randomIndex));
+
+                            usedImages.push(randomIndex);
+                            const imageUrl = cardBackImages[randomIndex];
+
+                            return `
+        <div style="width: 100%; height: 100%; position: relative; overflow: hidden; 
+                    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);">
+            <img src="${imageUrl}"
+                style="width: 100%; height: 100%; object-fit: cover; opacity: 0.85; 
+                       filter: blur(0.5px) brightness(0.9);"
+                alt="Card back design"
+                onerror="this.style.display='none'; 
+                this.parentElement.innerHTML='<div style=\\'width:100%;height:100%;
+                background:linear-gradient(135deg,#667eea,#764ba2);
+                display:flex;align-items:center;justify-content:center;
+                font-size:72px;color:rgba(255,255,255,0.3)\\'>?</div>'">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+                        font-size: 120px; color: rgba(255,255,255,0.15); font-weight: bold; 
+                        text-shadow: 0 0 20px rgba(0,0,0,0.5);">?</div>
+        </div>
+    `;
+                        }
+
+
+                    const cardContainer = document.getElementById('cardContainer');
+    items.forEach((item, index) => {
+        const cardDiv = document.createElement('div');
+                    cardDiv.className = 'col-6 col-md-4 col-lg-3 col-xxl-2 d-flex justify-content-center';
+                    cardDiv.innerHTML = `
+                    <div class="playing-card" data-card-text="${item}" data-card-index="${index}">
+                        <div class="playing-card-inner">
+                            <div class="playing-card-front">
+                                ${generateCardPattern(index)}
+                            </div>
+                        </div>
                     </div>
-                `;
-                cardContainer.appendChild(cardDiv);
-            });
+                    `;
+                    cardContainer.appendChild(cardDiv);
+    });
+
+                        document.querySelectorAll('.playing-card').forEach(card => {
+                        card.addEventListener('click', function () {
+                            const cardText = this.getAttribute('data-card-text');
+                            const cardIndex = this.getAttribute('data-card-index');
+                            const modal = new bootstrap.Modal(document.getElementById('cardModal'));
+
+                            // Set modal title
+                            document.getElementById('cardModalLabel').textContent = `Guess the card from ${conceptName}`;
+
+                            // Set revealed card text (hidden initially)
+                            document.getElementById('revealedCard').textContent = cardText;
+
+                            // Set modal card front pattern
+                            document.getElementById('modalCardFront').innerHTML = generateCardPattern(cardIndex);
+
+                            // Reset flip state
+                            document.getElementById('flipCardInner').classList.remove('flipped');
+
+                            // Show modal
+                            modal.show();
+                        });
+    });
+
+                    // Reveal button functionality
+                    document.getElementById('revealBtn').addEventListener('click', function () {
+                        document.getElementById('flipCardInner').classList.add('flipped');
+                    this.disabled = true;
+                    this.textContent = 'Revealed!';
+    });
+
+                    // Reset reveal button when modal is closed
+                    document.getElementById('cardModal').addEventListener('hidden.bs.modal', function () {
+                    const revealBtn = document.getElementById('revealBtn');
+                    revealBtn.disabled = false;
+                    revealBtn.textContent = 'Reveal Card';
+    });
+
 
             // Add click event to all cards
-            document.querySelectorAll('.text-card').forEach(card => {
+            document.querySelectorAll('.playing-card').forEach(card => {
                 card.addEventListener('click', function () {
                     const cardText = this.getAttribute('data-card-text');
+                    const cardIndex = this.getAttribute('data-card-index');
                     const modal = new bootstrap.Modal(document.getElementById('cardModal'));
 
                     // Set modal title
-                    document.getElementById('cardModalLabel').textContent = `Guess the card of ${conceptName} Concept`;
+                    document.getElementById('cardModalLabel').textContent = `Guess the card from ${conceptName}`;
 
                     // Set revealed card text (hidden initially)
                     document.getElementById('revealedCard').textContent = cardText;
+
+                    // Set modal card front pattern
+                    document.getElementById('modalCardFront').innerHTML = generateCardPattern(cardIndex);
 
                     // Reset flip state
                     document.getElementById('flipCardInner').classList.remove('flipped');
