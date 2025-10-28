@@ -839,14 +839,6 @@ a.text-decoration-none:hover {
     }
 }
 
-/* Extra Large Screens (1920px and up) */
-@media (min-width: 1920px) {
-    .playing-card {
-        max-width: 350px;
-        /* ← CHANGE THIS for extra large TV card size (default: 350px) */
-    }
-}
-
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -997,5 +989,43 @@ a.text-decoration-none:hover {
 
     .flip-card-back h2 {
         font-size: clamp(2rem, 2.5vw, 4rem);
+    }
+}
+/* Extra Large Screens (1920px and up) */
+@media (min-width: 1920px) {
+    .playing-card {
+        max-width: 420px;
+        /* better size for standard 4K monitors */
+    }
+}
+
+/* Ultra-Wide or Large TV Displays (2560px and up) */
+@media (min-width: 2560px) {
+    .playing-card {
+        max-width: 520px;
+        /* scales better for 4K/8K TVs */
+    }
+}
+
+/* Extra Large Screens (1920px and up) */
+@media (min-width: 1920px) {
+    .playing-card {
+        max-width: 420px;
+        /* better size for standard 4K monitors */
+    }
+}
+
+/* Ultra-Wide or Large TV Displays (2560px and up) */
+@media (min-width: 2560px) {
+    .playing-card {
+        max-width: 520px;
+        /* scales better for 4K/8K TVs */
+    }
+}
+
+/* Optional: make modal card scale too */
+@media (min-width: 2560px) {
+    .flip-card-container {
+        max-width: 700px;
     }
 }
